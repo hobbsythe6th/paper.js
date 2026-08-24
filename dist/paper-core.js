@@ -15139,7 +15139,7 @@ new function() {
 	function getSandbox() {
 		if (!iframe) {
 			iframe = document.createElement('iframe');
-			iframe.className = 'tw-paper-sandbox';
+			iframe.className = 'paper-sandbox';
 
 			iframe.sandbox = 'allow-same-origin';
 

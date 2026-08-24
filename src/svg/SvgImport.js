@@ -26,7 +26,7 @@ new function() {
     function getSandbox() {
         if (!iframe) {
             iframe = document.createElement('iframe');
-            iframe.className = 'tw-paper-sandbox';
+            iframe.className = 'paper-sandbox';
 
             // iframe must be same-origin so we can append elements into it directly.
             // By not including allow-scripts, the page itself won't be able to run anything, though
