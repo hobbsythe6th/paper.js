@@ -60,7 +60,7 @@
     "canvas": "^2.11.2",
     "del": "^5.1.0",
     "fancy-log": "^1.3.3",
-    "gulp": "^5.0.1",
+    "gulp": "^3.9.1",
     "gulp-cached": "^1.1.1",
     "gulp-git-streamed": "^2.10.1",
     "gulp-jshint": "^2.1.0",

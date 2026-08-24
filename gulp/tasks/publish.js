@@ -17,7 +17,6 @@ var gulp = require('gulp'),
     run = require('run-sequence'),
     git = require('gulp-git-streamed'),
     shell = require('gulp-shell'),
-    merge = require('merge-stream'),
     rename = require('gulp-rename'),
     jsonModifier = require('gulp-json-modifier'),
     options = require('../utils/options.js');

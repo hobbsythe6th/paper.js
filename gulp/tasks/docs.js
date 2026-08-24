@@ -12,6 +12,7 @@
 
 var gulp = require('gulp'),
     del = require('del'),
+    path = require('path'),
     rename = require('gulp-rename'),
     shell = require('gulp-shell'),
     options = require('../utils/options.js'),
@@ -21,6 +22,11 @@ var docOptions = {
     local: 'docs', // Generates the offline docs
     server: 'serverdocs' // Generates the website templates for the online docs
 };
+
+// The bundled JsRun/pegdown doc-generation tool relies on reflection tricks
+// that modern JDKs (9+) block. Point JSDOC_JAVA at a JDK 8 binary to use it
+// instead of whatever 'java' resolves to on PATH.
+var javaBin = process.env.JSDOC_JAVA || 'java';
 
 gulp.task('docs', ['build:full', 'docs:local', 'docs:typescript'], function() {
     return gulp.src('dist/paper-full.js')
@@ -34,7 +40,7 @@ Object.keys(docOptions).forEach(function(name) {
         return gulp.src('src')
             .pipe(shell(
                 [
-                    'java -cp jsrun.jar:lib/* JsRun app/run.js',
+                    '"' + javaBin + '" -cp jsrun.jar' + path.delimiter + 'lib/* JsRun app/run.js',
                     ' -c=conf/', name, '.conf ',
                     ' -D="renderMode:', mode, '" ',
                     ' -D="version:', options.version, '"'
@@ -68,7 +74,7 @@ gulp.task('docs:typescript:build', function() {
     return gulp.src('src')
         .pipe(shell(
             [
-                'java -cp jsrun.jar:lib/* JsRun app/run.js',
+                'java -cp jsrun.jar' + path.delimiter + 'lib/* JsRun app/run.js',
                 ' -c=conf/typescript.conf ',
                 ' -D="file:../../gulp/typescript/typescript-definition-data.json"',
                 ' -D="version:', options.version, '"',
