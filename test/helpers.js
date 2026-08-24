@@ -19,7 +19,7 @@ var isNodeContext = typeof global === 'object',
 if (isNodeContext) {
     scope = global;
     // Resemble.js needs the Image constructor global.
-    global.Image = paper.window.Image;
+    if(global.Image) global.Image = paper.window.Image;
 } else {
     scope = window;
     // This is only required when running in the browser:
