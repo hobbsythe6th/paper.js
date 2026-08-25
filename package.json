@@ -13,11 +13,11 @@
     "Jürg Lehni <juerg@scratchdisk.com> (http://scratchdisk.com)",
     "Jonathan Puckey <jonathan@puckey.studio> (http://studiomoniker.com)"
   ],
-  "main": "paper-full.js",
-  "types": "paper.d.ts",
+  "main": "dist/paper-full.js",
+  "types": "dist/paper.d.ts",
   "browser": {
-    "./node/extend.js": false,
-    "./node/self.js": false,
+    "./dist/node/extend.js": false,
+    "./dist/node/self.js": false,
     "canvas": false,
     "jsdom": false,
     "jsdom/lib/jsdom/living/generated/utils": false,
